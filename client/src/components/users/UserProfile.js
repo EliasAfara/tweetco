@@ -37,7 +37,7 @@ const UserProfile = ({
             src={
               state.user.backGroundImage !==
               'https://www.solidbackgrounds.com/images/1680x1050/1680x1050-ghost-white-solid-color-background.jpg'
-                ? require(`../../../../public/uploads/${state.user.backGroundImage}`)
+                ? state.user.backGroundImage
                 : 'https://www.solidbackgrounds.com/images/1680x1050/1680x1050-ghost-white-solid-color-background.jpg'
             }
             alt=''
@@ -52,7 +52,7 @@ const UserProfile = ({
                 src={
                   state.user.profileImage !==
                   'https://t4.ftcdn.net/jpg/00/64/67/63/240_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg'
-                    ? require(`../../../../public/uploads/${state.user.profileImage}`)
+                    ? state.user.profileImage
                     : 'https://t4.ftcdn.net/jpg/00/64/67/63/240_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg'
                 }
                 alt=''
