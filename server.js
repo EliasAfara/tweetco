@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const fileupload = require('express-fileupload');
 const cors = require('cors');
 const mongoSanitize = require('express-mongo-sanitize');
-const helmet = require('helmet');
+//const helmet = require('helmet');
 const hpp = require('hpp');
 const xss = require('xss-clean');
 const connectDB = require('./config/db');
@@ -40,7 +40,7 @@ app.use(fileupload());
 app.use(mongoSanitize());
 
 // Set security header
-app.use(helmet());
+//app.use(helmet());
 
 // Prevent XSS attacks
 app.use(xss());
