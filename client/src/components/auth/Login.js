@@ -30,7 +30,7 @@ const Login = ({ isAuthenticated, login }) => {
 
     login(username, password);
   };
-  if (isAuthenticated) {
+  if (isAuthenticated && localStorage.length !== 1) {
     return <Redirect to='/home' />;
   }
   return (
