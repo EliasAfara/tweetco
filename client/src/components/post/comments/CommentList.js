@@ -29,7 +29,7 @@ const CommentList = ({
           <div className='flex items-center mb-3'>
             <img
               className=' rounded-full mr-4 w-16 h-16'
-              src={require(`../../../../../public/uploads/${comment.avatar}`)}
+              src={comment.avatar}
               alt='Avatar'
             />
             <div className='flex flex-col text-sm md:text-md'>
