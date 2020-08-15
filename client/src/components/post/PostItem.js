@@ -12,8 +12,6 @@ import {
   clear,
 } from '../../actions/post';
 
-// Dont forget to fix the update problem with user info
-// Improve design
 const PostItem = ({
   post: {
     _id,

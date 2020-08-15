@@ -29,6 +29,7 @@ export const addPost = (data) => async (dispatch) => {
     });
     dispatch(loadTimeline());
   } catch (err) {
+    console.log(1);
     console.error(err.response.data.errors);
   }
 };

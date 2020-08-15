@@ -55,7 +55,7 @@ const PostForm = ({ addPost }) => {
         tags: tags.replace(/ +/g, '').split(','),
         image: reader.result,
       };
-      console.log(data);
+
       addPost(data);
     };
 

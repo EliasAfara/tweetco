@@ -10,17 +10,21 @@ const { v4 } = require('uuid');
 exports.addPost = async (req, res) => {
   const { text, title, tags, image } = req.body;
   try {
-    cloudinary.config({
-      cloud_name: process.env.CLOUDINARY_NAME,
-      api_key: process.env.CLOUDINARY_API_KEY,
-      api_secret: process.env.CLOUDINARY_API_SECRET,
-    });
+    photo = '';
+    if (image !== '') {
+      cloudinary.config({
+        cloud_name: process.env.CLOUDINARY_NAME,
+        api_key: process.env.CLOUDINARY_API_KEY,
+        api_secret: process.env.CLOUDINARY_API_SECRET,
+      });
 
-    const uploadResponse = await cloudinary.uploader.upload(image, {
-      upload_preset: 'dev_setups',
-      public_id: `post_${v4()}_${req.user.id}`,
-    });
-    photo = uploadResponse.url;
+      const uploadResponse = await cloudinary.uploader.upload(image, {
+        upload_preset: 'dev_setups',
+        public_id: `post_${v4()}_${req.user.id}`,
+      });
+      photo = uploadResponse.url;
+    }
+
     const user = await User.findById(req.user.id).select('-email');
     const post = await Post.create({
       user,

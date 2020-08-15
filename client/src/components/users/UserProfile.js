@@ -14,7 +14,6 @@ const UserProfile = ({
   searching,
   follow,
   unfollow,
-  loading,
 }) => {
   if (!isAuthenticated && localStorage.length === 1) {
     return <Redirect to='/login' />;
@@ -154,7 +153,6 @@ const mapStatetoProps = (state) => ({
   user: state.auth.user,
   isAuthenticated: state.auth.isAuthenticated,
   searching: state.users.searching,
-  loading: state.users.loading,
 });
 
 UserProfile.propTypes = {
@@ -163,6 +161,5 @@ UserProfile.propTypes = {
   searching: PropTypes.bool,
   follow: PropTypes.func,
   unfollow: PropTypes.func,
-  loading: PropTypes.bool,
 };
 export default connect(mapStatetoProps, { follow, unfollow })(UserProfile);

@@ -27,7 +27,7 @@ const Login = ({ isAuthenticated, login }) => {
 
       password,
     };
-    console.log(data);
+
     login(username, password);
   };
   if (isAuthenticated) {

@@ -49,7 +49,7 @@ const Register = ({ register, isAuthenticated }) => {
         country,
         bio,
       };
-      console.log(data);
+
       register(data);
       window.scrollTo(0, 0);
     } else {
