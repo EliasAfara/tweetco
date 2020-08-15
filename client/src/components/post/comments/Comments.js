@@ -81,7 +81,7 @@ const Comments = ({
             {/*Avatar */}
             <img
               className='rounded-full mr-4 w-16 h-16'
-              src={require(`../../../../../public/uploads/${post.avatar}`)}
+              src={post.avatar}
               alt='Avatar'
             />
             {/*Content */}
@@ -129,7 +129,7 @@ const Comments = ({
             {post.photo !== '' && (
               <img
                 className=''
-                src={require(`../../../../../public/uploads/${post.photo}`)}
+                src={post.photo}
                 alt=' not found'
                 style={{ maxHeight: '400px' }}
               />
