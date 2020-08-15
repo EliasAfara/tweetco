@@ -30,9 +30,9 @@ const Login = ({ isAuthenticated, login }) => {
     };
 
     login(username, password);
+    history.push('/home');
   };
   if (isAuthenticated && localStorage.length !== 1) {
-    history.push('/home');
     return <Redirect to='/home' />;
   }
   return (
