@@ -31,17 +31,17 @@ const PostForm = ({ addPost }) => {
     };
   };
 
-  const onSubmit = (e)=>{
+  const onSubmit = (e) => {
     e.preventDefault();
     const data = {
-      title='',
+      title: '',
       text,
       tags: [],
-      image: ''
+      image: '',
     };
-    
+
     addPost(data);
-  }
+  };
 
   const handleSubmitFile = (e) => {
     e.preventDefault();
@@ -72,7 +72,7 @@ const PostForm = ({ addPost }) => {
     <Fragment>
       <form
         className='overflow-hidden  mx-auto p-3 border-b border-gray-300'
-        onSubmit={(e)=>onSubmit(e)}
+        onSubmit={(e) => onSubmit(e)}
       >
         <label className='block'>
           <span className='text-blue-300 font-bold text-xl mb-3 transition duration-300 ease-in-out hover:text-blue-500'>
