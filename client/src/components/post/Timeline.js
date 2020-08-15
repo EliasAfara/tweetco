@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import PostForm from './PostForm';
@@ -8,7 +8,9 @@ import PostList from './PostList';
 import LoadingPost from '../layout/loading/LoadingPost';
 
 const Timeline = ({ isAuthenticated, searching, timeline, user }) => {
+  const history = useHistory();
   if (!isAuthenticated && localStorage.length === 1) {
+    history.push('/login');
     return <Redirect to='/login' />;
   } else if (searching) {
     return <Redirect to={{ pathname: '/search', state: { prev: '/home' } }} />;

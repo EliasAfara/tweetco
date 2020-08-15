@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { register } from '../../actions/auth';
@@ -37,6 +37,8 @@ const Register = ({ register, isAuthenticated }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const history = useHistory();
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (password === password2) {
@@ -58,6 +60,7 @@ const Register = ({ register, isAuthenticated }) => {
     }
   };
   if (isAuthenticated) {
+    history.push('/profile');
     return <Redirect to='/profile' />;
   }
   return (

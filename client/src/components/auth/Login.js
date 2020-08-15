@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
 import PropTypes from 'prop-types';
@@ -10,6 +10,7 @@ const Login = ({ isAuthenticated, login }) => {
     username: '',
     password: '',
   });
+  const history = useHistory();
   const {
     username,
 
@@ -31,6 +32,7 @@ const Login = ({ isAuthenticated, login }) => {
     login(username, password);
   };
   if (isAuthenticated && localStorage.length !== 1) {
+    history.push('/home');
     return <Redirect to='/home' />;
   }
   return (
