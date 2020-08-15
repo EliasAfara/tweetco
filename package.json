@@ -4,7 +4,6 @@
   "description": "tweetco backend",
   "main": "server.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
     "start": "node server",
     "server": "nodemon server",
     "client": "npm start --prefix client",
@@ -29,11 +28,14 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.26",
     "morgan": "^1.10.0",
+    "tailwindcss": "^1.6.2",
     "uuid": "^8.3.0",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
+    "autoprefixer": "^9.8.6",
     "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "postcss-cli": "^7.1.1"
   }
 }
