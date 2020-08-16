@@ -32,7 +32,10 @@ const Login = ({ isAuthenticated, login }) => {
     login(username, password);
     history.push('/home');
   };
-  if (isAuthenticated && localStorage.length !== 1) {
+  if (isAuthenticated) {
+    {
+      console.log('inside');
+    }
     return <Redirect to='/home' />;
   }
   return (

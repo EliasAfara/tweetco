@@ -41,6 +41,7 @@ const PostForm = ({ addPost }) => {
     };
 
     addPost(data);
+    setFormData({ title: '', text: '', tags: '' });
   };
 
   const handleSubmitFile = (e) => {
