@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
@@ -36,6 +36,7 @@ const PostItem = ({
   getPost,
   clear,
 }) => {
+  const [leave, setLeave] = useState(false);
   const [liked, setLiked] = useState(likes.includes(user.username));
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
@@ -64,6 +65,20 @@ const PostItem = ({
       window.location.reload();
     }, 1000);
   };
+  if (leave) {
+    return (
+      <Redirect
+        to={
+          username === user.username
+            ? 'profile'
+            : {
+                pathname: '/user',
+                state: { user: post_user, prev: '/home' },
+              }
+        }
+      />
+    );
+  }
 
   return (
     <Fragment>
@@ -82,28 +97,19 @@ const PostItem = ({
             <div className='flex flex-col text-sm md:text-md w-4/5 mr-2 md:w-10/12'>
               {/*Header */}
               <div className=''>
-                <Link
-                  className='text-gray-900 leading-none focus:outline-none'
-                  to={
-                    username === user.username
-                      ? 'profile'
-                      : {
-                          pathname: '/user',
-                          state: { user: post_user, prev: '/home' },
-                        }
-                  }
-                  onMouseOver={() => {
+                <button
+                  onClick={() => {
                     if (username !== user.username) {
                       getUser(username);
                     }
-                  }}
-                  onClick={() => {
                     window.scrollTo(0, 0);
                     clear();
+                    setTimeout(() => setLeave(true), 500);
                   }}
+                  className='text-gray-900 leading-none focus:outline-none'
                 >
                   <b> {name}</b>
-                </Link>
+                </button>
 
                 <p className='text-gray-600 '>@{username}</p>
                 <p className='text-gray-600'>
