@@ -6,12 +6,12 @@ import PropTypes from 'prop-types';
 import PostForm from './PostForm';
 import PostList from './PostList';
 import LoadingPost from '../layout/loading/LoadingPost';
-import { loadTimeline } from '../../actions/post';
+import { loadUser } from '../../actions/auth';
 
-const Timeline = ({ searching, timeline, user, loadTimeline }) => {
+const Timeline = ({ searching, timeline, user, loadUser }) => {
   useEffect(() => {
-    loadTimeline();
-  }, [loadTimeline]);
+    loadUser();
+  }, [loadUser]);
   if (searching) {
     return <Redirect to={{ pathname: '/search', state: { prev: '/home' } }} />;
   }
@@ -35,7 +35,7 @@ Timeline.propTypes = {
   isAuthenticated: PropTypes.bool,
   searching: PropTypes.bool,
   timeline: PropTypes.array,
-  loadTimeline: PropTypes.func,
+  loadUser: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -45,4 +45,4 @@ const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { loadTimeline })(Timeline);
+export default connect(mapStateToProps, { loadUser })(Timeline);

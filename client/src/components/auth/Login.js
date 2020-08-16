@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
 import PropTypes from 'prop-types';
@@ -10,7 +10,6 @@ const Login = ({ isAuthenticated, login }) => {
     username: '',
     password: '',
   });
-  const history = useHistory();
   const { username, password } = formData;
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,7 +18,6 @@ const Login = ({ isAuthenticated, login }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     login(username, password);
-    history.push('/home');
   };
   if (isAuthenticated) {
     return <Redirect to='/home' />;

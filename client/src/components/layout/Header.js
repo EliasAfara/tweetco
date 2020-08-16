@@ -4,9 +4,10 @@ import { logout } from '../../actions/auth';
 import { toggleSearch, searchUsers } from '../../actions/users';
 import { clear } from '../../actions/post';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Header = ({ isAuthenticated, logout, toggleSearch, searchUsers }) => {
+  const history = useHistory();
   const [styleState, setStyleState] = useState(
     'w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block',
   );
@@ -131,7 +132,8 @@ const Header = ({ isAuthenticated, logout, toggleSearch, searchUsers }) => {
                 className='block mt-4 lg:inline-block lg:mt-0 text-blue-200 transition duration-300 focus:outline-none ease-in-out hover:text-white '
                 onClick={() => {
                   logout();
-                  clear();
+                  history.push('/');
+                  setTimeout(() => window.location.reload(false), 500);
                 }}
               >
                 Log out <i className='fas fa-sign-out-alt ml-1'></i>

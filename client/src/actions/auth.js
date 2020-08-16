@@ -38,7 +38,7 @@ export const register = (formData) => async (dispatch) => {
       type: REGISTER_SUCCESS,
       payload: res.data,
     });
-    dispatch(loadUser());
+    setTimeout(() => dispatch(loadUser()), 500);
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -59,6 +59,7 @@ export const login = (username, password) => async (dispatch) => {
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     dispatch(loadUser());
   } catch (err) {
+    console.log(err);
     const errors = err.response.data.errors;
 
     if (errors) {
