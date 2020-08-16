@@ -39,11 +39,12 @@ const App = () => {
           <Header />
           <div className=' max-w-screen-md container overflow-hidden shadow-lg mx-auto'>
             <Switch>
-              <Route
+              <PrivateRoute
                 exact
                 path='/'
+                component={Timeline}
                 //render={(props) => {<Redirect to='/login' />}}
-                component={Reload}
+                //component={Reload}
               />
               <PrivateRoute exact path='/profile' component={Profile} />
               <PrivateRoute exact path='/home' component={Timeline} />
