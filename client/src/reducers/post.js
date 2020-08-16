@@ -37,7 +37,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: true,
-        post_user: null,
+
         user_posts: [],
         user_liked_posts: [],
         post: null,
