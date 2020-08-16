@@ -476,6 +476,7 @@ const Profile = ({
                             onChange={(e) => onChange(e)}
                             type='number'
                             placeholder='Year...'
+                            min='1'
                           />
                         </div>
                       </div>

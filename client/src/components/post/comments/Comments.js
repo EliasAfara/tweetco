@@ -112,8 +112,10 @@ const Comments = ({
                     getUser(post.username);
                   }
 
-                  setTimeout(() => setLeave(true), 500);
-                  window.scrollTo(0, 0);
+                  setTimeout(() => {
+                    setLeave(true);
+                    window.scrollTo(0, 0);
+                  }, 500);
                 }}
               >
                 <b> {post.name}</b>

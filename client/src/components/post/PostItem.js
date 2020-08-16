@@ -102,9 +102,12 @@ const PostItem = ({
                     if (username !== user.username) {
                       getUser(username);
                     }
-                    window.scrollTo(0, 0);
+
                     clear();
-                    setTimeout(() => setLeave(true), 500);
+                    setTimeout(() => {
+                      setLeave(true);
+                      window.scrollTo(0, 0);
+                    }, 500);
                   }}
                   className='text-gray-900 leading-none focus:outline-none'
                 >

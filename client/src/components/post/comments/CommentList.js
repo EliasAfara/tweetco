@@ -64,8 +64,10 @@ const CommentList = ({
                   if (comment.username !== user.username) {
                     getUser(comment.username);
                   }
-                  setTimeout(() => setLeave(true), 500);
-                  window.scrollTo(0, 0);
+                  setTimeout(() => {
+                    setLeave(true);
+                    window.scrollTo(0, 0);
+                  }, 500);
                 }}
               >
                 <b> {comment.name}</b>

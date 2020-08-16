@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { register } from '../../actions/auth';
 import Alert from '../layout/Alert';
+import { setAlert } from '../../actions/alert';
 
-const Register = ({ register, isAuthenticated }) => {
+const Register = ({ register, isAuthenticated, setAlert }) => {
   const [match, setMatch] = useState(true);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -42,18 +43,23 @@ const Register = ({ register, isAuthenticated }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (password === password2) {
-      const data = {
-        name: firstName + ' ' + lastName,
-        username,
-        email,
-        password,
-        birthday: day + ' ' + month + ' ' + year,
-        country,
-        bio,
-      };
+      if (year <= 0) {
+        setAlert('Please enter a proper year', 'red');
+        window.scrollTo(0, 0);
+      } else {
+        const data = {
+          name: firstName + ' ' + lastName,
+          username,
+          email,
+          password,
+          birthday: day + ' ' + month + ' ' + year,
+          country,
+          bio,
+        };
 
-      register(data);
-      window.scrollTo(0, 0);
+        register(data);
+        window.scrollTo(0, 0);
+      }
     } else {
       setMatch(false);
       setTimeout(() => setMatch(true), 3000);
@@ -323,10 +329,11 @@ const Register = ({ register, isAuthenticated }) => {
 Register.propTypes = {
   register: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
+  setAlert: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { register })(Register);
+export default connect(mapStateToProps, { register, setAlert })(Register);
