@@ -14,7 +14,6 @@ import PropTypes from 'prop-types';
 const Profile = ({
   user,
   loading,
-  isAuthenticated,
   updateProfilePic,
   updateBackgroundePic,
   updateUserInfo,
@@ -111,11 +110,7 @@ const Profile = ({
     };
   };
 
-  /*if (!isAuthenticated && localStorage.length === 1) {
-    return <Redirect to='/login' />;
-  } else */ if (
-    searching
-  ) {
+  if (searching) {
     return (
       <Redirect to={{ pathname: '/search', state: { prev: '/profile' } }} />
     );

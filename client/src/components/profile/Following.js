@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 import UserSearch from '../users/UserSearch';
 import Back from '../layout/Back';
 import LoadingUser from '../layout/loading/LoadingUser';
-import { Redirect } from 'react-router-dom';
-
 const Following = ({
   location: {
     state: { user, prev },
@@ -16,15 +14,11 @@ const Following = ({
   following,
   clear,
   loading,
-  isAuthenticated,
 }) => {
   useEffect(() => {
     clear();
     getFollowing(user.following);
   }, [user.following, getFollowing, clear]);
-
-  /*if (!isAuthenticated && localStorage.length === 1)
-    return <Redirect to='/login' />;*/
 
   return (
     <Fragment>

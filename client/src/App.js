@@ -1,10 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -22,6 +17,7 @@ import Followers from './components/profile/Followers';
 import Following from './components/profile/Following';
 import Comments from './components/post/comments/Comments';
 import PrivateRoute from './components/routing/PrivateRoute';
+import Reload from './components/routing/Reload';
 
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
@@ -46,7 +42,8 @@ const App = () => {
               <Route
                 exact
                 path='/'
-                render={(props) => <Redirect to='/login' />}
+                //render={(props) => {<Redirect to='/login' />}}
+                component={Reload}
               />
               <PrivateRoute exact path='/profile' component={Profile} />
               <PrivateRoute exact path='/home' component={Timeline} />
