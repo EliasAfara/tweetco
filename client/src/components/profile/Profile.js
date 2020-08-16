@@ -477,6 +477,7 @@ const Profile = ({
                             type='number'
                             placeholder='Year...'
                             min='1'
+                            max={new Date().getFullYear()}
                           />
                         </div>
                       </div>

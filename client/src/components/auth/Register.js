@@ -43,7 +43,7 @@ const Register = ({ register, isAuthenticated, setAlert }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (password === password2) {
-      if (year <= 0) {
+      if (year <= 0 || year > new Date().getFullYear()) {
         setAlert('Please enter a proper year', 'red');
         window.scrollTo(0, 0);
       } else {
