@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getUser, deleteComment } from '../../../actions/post';
@@ -11,6 +11,22 @@ const CommentList = ({
   postId,
   deleteComment,
 }) => {
+  const [leave, setLeave] = useState(false);
+  const [username, setUsername] = useState('');
+  if (leave) {
+    return (
+      <Redirect
+        to={
+          username === user.username
+            ? 'profile'
+            : {
+                pathname: '/user',
+                state: { user: post_user, prev: '/home' },
+              }
+        }
+      />
+    );
+  }
   return (
     <ul>
       {list.map((comment) => (
@@ -33,7 +49,7 @@ const CommentList = ({
               alt='Avatar'
             />
             <div className='flex flex-col text-sm md:text-md'>
-              <Link
+              <button
                 className='text-gray-900 leading-none focus:outline-none'
                 to={
                   comment.username === user.username
@@ -43,15 +59,17 @@ const CommentList = ({
                         state: { user: post_user, prev: '/home' },
                       }
                 }
-                onMouseOver={() => {
+                onClick={() => {
+                  setUsername(comment.username);
                   if (comment.username !== user.username) {
                     getUser(comment.username);
                   }
+                  setTimeout(() => setLeave(true), 500);
+                  window.scrollTo(0, 0);
                 }}
-                onClick={() => window.scrollTo(0, 0)}
               >
                 <b> {comment.name}</b>
-              </Link>
+              </button>
 
               <p className='text-gray-600 '>@{comment.username}</p>
               <p className='text-gray-600'>

@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
@@ -30,6 +30,7 @@ const Comments = ({
   deletePost,
   comment,
 }) => {
+  const [leave, setLeave] = useState(false);
   const [liked, setLiked] = useState(
     post === null ? false : post.likes.includes(post.username),
   );
@@ -73,6 +74,21 @@ const Comments = ({
     return <Redirect to='/home' />;
   }
 
+  if (leave) {
+    return (
+      <Redirect
+        to={
+          post.username === user.username
+            ? 'profile'
+            : {
+                pathname: '/user',
+                state: { user: post_user, prev: '/home' },
+              }
+        }
+      />
+    );
+  }
+
   return (
     <Fragment>
       <Back route={'/home'} currentUser={user} />
@@ -88,25 +104,20 @@ const Comments = ({
             {/*Content */}
             <div className='flex flex-col text-sm md:text-md w-4/5 mr-2 md:w-10/12'>
               {/*Header */}
-              <Link
-                className='text-gray-900 leading-none focus:outline-none'
-                to={
-                  post.username === user.username
-                    ? 'profile'
-                    : {
-                        pathname: '/user',
-                        state: { user: post_user, prev: '/home' },
-                      }
-                }
-                onMouseOver={() => {
+
+              <button
+                className='text-gray-900 leading-none focus:outline-none text-left'
+                onClick={() => {
                   if (post.username !== user.username) {
                     getUser(post.username);
                   }
+
+                  setTimeout(() => setLeave(true), 500);
+                  window.scrollTo(0, 0);
                 }}
-                onClick={() => window.scrollTo(0, 0)}
               >
                 <b> {post.name}</b>
-              </Link>
+              </button>
 
               <p className='text-gray-600 '>@{post.username}</p>
               <p className='text-gray-600'>
