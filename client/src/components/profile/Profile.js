@@ -140,7 +140,7 @@ const Profile = ({
             <input
               type='file'
               name='backGroundPic'
-              accept='.jpg, .jpeg, .png'
+              accept='image/*'
               className='absolute z-10 w-full max-h-md  cursor-pointer top-0 left-0 opacity-0 '
               style={{ height: '250px' }}
               onChange={handleFileInputChange2}
@@ -164,7 +164,7 @@ const Profile = ({
                 <input
                   type='file'
                   name='profilePic'
-                  accept='.jpg, .jpeg, .png'
+                  accept='image/*'
                   className='w-32 h-32 md:w-40  md:h-40 rounded-full absolute ml-2 z-10 opacity-0 cursor-pointer'
                   style={{ top: '-20%' }}
                   value={fileInputState1}

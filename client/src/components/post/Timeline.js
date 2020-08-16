@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -6,8 +6,12 @@ import PropTypes from 'prop-types';
 import PostForm from './PostForm';
 import PostList from './PostList';
 import LoadingPost from '../layout/loading/LoadingPost';
+import { loadTimeline } from '../../actions/post';
 
-const Timeline = ({ searching, timeline, user }) => {
+const Timeline = ({ searching, timeline, user, loadTimeline }) => {
+  useEffect(() => {
+    loadTimeline();
+  }, [loadTimeline]);
   if (searching) {
     return <Redirect to={{ pathname: '/search', state: { prev: '/home' } }} />;
   }
@@ -31,6 +35,7 @@ Timeline.propTypes = {
   isAuthenticated: PropTypes.bool,
   searching: PropTypes.bool,
   timeline: PropTypes.array,
+  loadTimeline: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -40,4 +45,4 @@ const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps, {})(Timeline);
+export default connect(mapStateToProps, { loadTimeline })(Timeline);

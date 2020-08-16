@@ -79,6 +79,10 @@ export const updateUserInfo = (formData) => async (dispatch) => {
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
     console.log(errors);
   }
 };
@@ -92,6 +96,10 @@ export const updateProfilePic = (image) => async (dispatch) => {
     dispatch(loadTimeline());
   } catch (err) {
     const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
     console.log(errors);
   }
 };
@@ -102,6 +110,10 @@ export const updateBackgroundePic = (image) => async (dispatch) => {
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
     console.log(errors);
   }
 };
@@ -113,6 +125,10 @@ export const follow = (username) => async (dispatch) => {
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
     console.log(errors);
   }
 };
@@ -124,6 +140,10 @@ export const unfollow = (username) => async (dispatch) => {
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
     console.log(errors);
   }
 };

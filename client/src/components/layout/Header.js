@@ -48,7 +48,7 @@ const Header = ({
   };
 
   return (
-    <nav className='sticky flex items-center justify-between flex-wrap bg-blue-500 p-3 top-0 z-10'>
+    <nav className='sticky flex items-center justify-between flex-wrap bg-blue-500 p-3 top-0 z-30'>
       <div className='flex items-center flex-shrink-0 text-white mr-6'>
         <i className='fab fa-twitter text-2xl mr-3 pt-2'></i>
 
@@ -95,7 +95,7 @@ const Header = ({
                   <i className='absolute right-0 top-0 mt-6 mr-6 fas fa-search text-gray-600 h-4 w-4 fill-current'></i>
                   <input
                     type='submit'
-                    className='absolute right-0 top-0 mt-4 mr-6 z-20 opacity-0 cursor-pointer '
+                    className='absolute right-0 top-0 mt-4 mr-6 z-50 opacity-0 cursor-pointer '
                   />
                 </form>
               )}

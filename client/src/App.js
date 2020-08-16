@@ -17,7 +17,6 @@ import Followers from './components/profile/Followers';
 import Following from './components/profile/Following';
 import Comments from './components/post/comments/Comments';
 import PrivateRoute from './components/routing/PrivateRoute';
-import Reload from './components/routing/Reload';
 
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
@@ -39,13 +38,7 @@ const App = () => {
           <Header />
           <div className=' max-w-screen-md container overflow-hidden shadow-lg mx-auto'>
             <Switch>
-              <PrivateRoute
-                exact
-                path='/'
-                component={Timeline}
-                //render={(props) => {<Redirect to='/login' />}}
-                //component={Reload}
-              />
+              <PrivateRoute exact path='/' component={Timeline} />
               <PrivateRoute exact path='/profile' component={Profile} />
               <PrivateRoute exact path='/home' component={Timeline} />
               <Route exact path='/login' component={Login} />

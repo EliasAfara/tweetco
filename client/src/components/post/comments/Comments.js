@@ -14,6 +14,7 @@ import {
 
 import Back from '../../layout/Back';
 import CommentList from './CommentList';
+import Alert from '../../layout/Alert';
 
 // Dont forget to fix the update problem with user info
 // Improve design
@@ -206,7 +207,6 @@ const Comments = ({
             onChange={(e) => setCommentText(e.target.value)}
             className='w-4/5 border rounded-full py-2 px-3 border-blue-200 '
             placeholder='Comment...'
-            required
           />
           <input
             type='submit'
@@ -221,6 +221,7 @@ const Comments = ({
             <i className='fas fa-arrow-right'></i>
           </button>
         </form>
+        <Alert />
         <CommentList list={post.comments} user={user} postId={post._id} />
       </div>
       {showModal && (

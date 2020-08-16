@@ -7,6 +7,7 @@ import {
   GET_POST,
 } from './types';
 import api from '../utils/api';
+import { setAlert } from './alert';
 import { loadUser } from './auth';
 
 // Load Timeline
@@ -29,8 +30,12 @@ export const addPost = (data) => async (dispatch) => {
     });
     dispatch(loadTimeline());
   } catch (err) {
-    console.log(1);
-    console.error(err.response.data.errors);
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      console.log(1);
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
   }
 };
 
@@ -39,7 +44,12 @@ export const getUser = (username) => async (dispatch) => {
     const user = await api.get(`/users/${username}`);
     dispatch({ type: GET_USER, payload: user.data.data });
   } catch (err) {
-    console.error(err.response.data.errors);
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
+    console.log(errors);
   }
 };
 
@@ -48,45 +58,104 @@ export const clear = () => (dispatch) => {
 };
 
 export const like = (id, username) => async (dispatch) => {
-  await api.put(`/post/${id}/like`);
-  dispatch(loadTimeline());
-  dispatch(getUserPost(username));
-  dispatch(getUserLikedPost(username));
+  try {
+    await api.put(`/post/${id}/like`);
+    dispatch(loadTimeline());
+    dispatch(getUserPost(username));
+    dispatch(getUserLikedPost(username));
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
+    console.log(errors);
+  }
 };
 
 export const unlike = (id, username) => async (dispatch) => {
-  await api.put(`/post/${id}/unlike`);
-  dispatch(loadTimeline());
-  dispatch(getUserPost(username));
-  dispatch(getUserLikedPost(username));
+  try {
+    await api.put(`/post/${id}/unlike`);
+    dispatch(loadTimeline());
+    dispatch(getUserPost(username));
+    dispatch(getUserLikedPost(username));
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
+    console.log(errors);
+  }
 };
 
 export const editPost = (formData, id) => async (dispatch) => {
-  await api.put(`/post/${id}`, formData);
-  dispatch(loadUser);
+  try {
+    await api.put(`/post/${id}`, formData);
+    dispatch(loadUser);
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
+    console.log(errors);
+  }
 };
 
 export const deletePost = (id) => async (dispatch) => {
-  await api.delete(`/post/${id}`);
-  dispatch(loadUser);
+  try {
+    await api.delete(`/post/${id}`);
+    dispatch(loadUser);
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
+    console.log(errors);
+  }
 };
 
 export const getPost = (id) => async (dispatch) => {
-  const res = await api.get(`/post/search/${id}`);
-  dispatch({ type: GET_POST, payload: res.data.data });
+  try {
+    const res = await api.get(`/post/search/${id}`);
+    dispatch({ type: GET_POST, payload: res.data.data });
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
+    console.log(errors);
+  }
 };
 
 export const getUserPost = (username) => async (dispatch) => {
   try {
     const res = await api.get(`/post/${username}`);
     dispatch({ type: USER_POSTS, payload: res.data.data });
-  } catch (error) {}
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
+    console.log(errors);
+  }
 };
 export const getUserLikedPost = (username) => async (dispatch) => {
   try {
     const res = await api.get(`/post/${username}/like`);
     dispatch({ type: USER_LIKED_POSTS, payload: res.data.data });
-  } catch (error) {}
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
+    console.log(errors);
+  }
 };
 
 export const comment = (postId, formData) => async (dispatch) => {
@@ -95,12 +164,25 @@ export const comment = (postId, formData) => async (dispatch) => {
       'Content-Type': 'Application/json',
     });
     dispatch(getPost(postId));
-  } catch (error) {}
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
+  }
 };
 
 export const deleteComment = (postId, commentId) => async (dispatch) => {
   try {
     await api.delete(`/post/comment/${postId}/${commentId}`);
     dispatch(getPost(postId));
-  } catch (error) {}
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.message, 'red')));
+    }
+    console.log(errors);
+  }
 };

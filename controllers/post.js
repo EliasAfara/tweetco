@@ -11,6 +11,11 @@ exports.addPost = async (req, res) => {
   const { text, title, tags, image } = req.body;
   try {
     photo = '';
+    if (text === '') {
+      return res
+        .status(500)
+        .json({ errors: [{ message: "Can't Post without text " }] });
+    }
     if (image !== '') {
       cloudinary.config({
         cloud_name: process.env.CLOUDINARY_NAME,
@@ -272,6 +277,11 @@ exports.unLike = async (req, res) => {
 // @access  Private
 exports.comment = async (req, res) => {
   try {
+    if (req.body.text === '') {
+      return res
+        .status(500)
+        .json({ errors: [{ message: 'Please add a comment' }] });
+    }
     const post = await Post.findById(req.params.postId);
 
     const newComment = new Post({

@@ -1,8 +1,9 @@
 import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/post';
-
 import PropTypes from 'prop-types';
+
+import Alert from '../layout/Alert';
 
 const PostForm = ({ addPost }) => {
   const [formData, setFormData] = useState({
@@ -59,8 +60,6 @@ const PostForm = ({ addPost }) => {
 
       addPost(data);
     };
-
-    //
     setShowModal(false);
     setFormData({ title: '', text: '', tags: '' });
   };
@@ -75,6 +74,7 @@ const PostForm = ({ addPost }) => {
         className='overflow-hidden  mx-auto p-3 border-b border-gray-300'
         onSubmit={(e) => onSubmit(e)}
       >
+        <Alert />
         <label className='block'>
           <span className='text-blue-300 font-bold text-xl mb-3 transition duration-300 ease-in-out hover:text-blue-500'>
             Quick Tweet
@@ -86,7 +86,6 @@ const PostForm = ({ addPost }) => {
             name='text'
             value={text}
             onChange={(e) => onChange(e)}
-            required
           ></textarea>
         </label>
         <div className=' flex item-center flex-row m-3'>
@@ -133,6 +132,7 @@ const PostForm = ({ addPost }) => {
                       <input
                         type='file'
                         name='image'
+                        accept='image/*'
                         className='absolute h-full w-full top-0 left-0 cursor-pointer z-20 opacity-0'
                         value={fileInputState}
                         onChange={handleFileInputChange}

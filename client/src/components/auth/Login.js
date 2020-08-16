@@ -11,31 +11,17 @@ const Login = ({ isAuthenticated, login }) => {
     password: '',
   });
   const history = useHistory();
-  const {
-    username,
-
-    password,
-  } = formData;
+  const { username, password } = formData;
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    const data = {
-      username,
-
-      password,
-    };
-
     login(username, password);
     history.push('/home');
   };
   if (isAuthenticated) {
-    {
-      console.log('inside');
-    }
     return <Redirect to='/home' />;
   }
   return (
