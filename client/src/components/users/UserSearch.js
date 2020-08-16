@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toggleSearch, clear } from '../../actions/users';
@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 const UserSearch = ({ user, toggleSearch, clear, follow, auth }) => {
   return (
     <div className='flex bg-white rounded-lg p-6 transition duration-300 ease-in-out hover:bg-gray-200 border-b border-gray-200  w-full'>
-      <div className='flex flex-row w-2/3  sm:w-full justify-between'>
+      <div className='flex flex-row w-full justify-between'>
         <img
           className='h-12 w-12 sm:h-24 sm:w-24 rounded-full  mr-6 item-center'
           src={
@@ -40,17 +40,30 @@ const UserSearch = ({ user, toggleSearch, clear, follow, auth }) => {
         </div>
         <div className='w-1/6  item-left my-auto '>
           {auth.user.following.includes(user.username) ? (
-            <p className='bg-blue-500  text-white font-bold item-right py-2 px-4 rounded-full inline'>
-              Following
-            </p>
+            <Fragment>
+              <p className='bg-blue-500  text-white font-bold item-right py-2 px-4 rounded-full hidden sm:inline'>
+                Following
+              </p>
+              <p className='bg-blue-500  text-white font-bold item-right py-2 px-4 rounded-full inline sm:hidden'>
+                <i class='fas fa-user-check'></i>
+              </p>
+            </Fragment>
           ) : (
             auth.user.username !== user.username && (
-              <button
-                className='bg-blue-500 hover:bg-blue-700 text-white font-bold item-right py-2 px-4 rounded-full focus:outline-none'
-                onClick={() => follow(user.username)}
-              >
-                Follow
-              </button>
+              <Fragment>
+                <button
+                  className='bg-blue-500 hover:bg-blue-700 text-white hidden sm:block  font-bold item-right py-2 px-4 rounded-full focus:outline-none'
+                  onClick={() => follow(user.username)}
+                >
+                  Follow
+                </button>
+                <button
+                  className='bg-blue-500 hover:bg-blue-700 text-white block sm:hidden  font-bold item-right py-2 px-4 rounded-full focus:outline-none'
+                  onClick={() => follow(user.username)}
+                >
+                  <i class='fas fa-user-plus'></i>
+                </button>
+              </Fragment>
             )
           )}
         </div>
