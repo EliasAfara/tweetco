@@ -175,7 +175,7 @@ const Register = ({ register, isAuthenticated }) => {
           </label>
           <div className='relative z-0'>
             <select
-              className='block appearance-none w-full border border-blue-200  py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500  '
+              className='block appearance-none w-full border border-blue-200  py-3 px-4 pr-8 rounded leading-tight focus:outline-none bg-white focus:border-blue-500  '
               name='day'
               value={day}
               onChange={(e) => onChange(e)}
@@ -229,7 +229,7 @@ const Register = ({ register, isAuthenticated }) => {
           </label>
           <div className='relative'>
             <select
-              className='block appearance-none w-full border border-blue-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500 '
+              className='block appearance-none w-full border border-blue-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none bg-white focus:border-blue-500 '
               name='month'
               value={month}
               onChange={(e) => onChange(e)}
@@ -264,7 +264,7 @@ const Register = ({ register, isAuthenticated }) => {
           </label>
           <input
             required
-            className='appearance-none block w-full  border border-blue-200 rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white focus:border-blue-500  '
+            className='appearance-none block w-full  border border-blue-200 rounded py-3 px-4  leading-tight focus:outline-none bg-white focus:border-blue-500  '
             name='year'
             value={year}
             onChange={(e) => onChange(e)}
@@ -280,7 +280,7 @@ const Register = ({ register, isAuthenticated }) => {
           </label>
           <input
             required
-            className='appearance-none block w-full  border border-blue-200 rounded py-3 px-4 mb-3 leading-tight   focus:border-blue-500'
+            className='appearance-none block w-full  border border-blue-200 rounded py-3 px-4 mb-3 leading-tight  focus:outline-none  focus:border-blue-500'
             name='country'
             value={country}
             onChange={(e) => onChange(e)}
@@ -294,7 +294,7 @@ const Register = ({ register, isAuthenticated }) => {
           Bio
         </span>
         <textarea
-          className='form-textarea mt-3 block w-full border border-blue-200 p-3 rounded focus:border-blue-500 '
+          className='form-textarea mt-3 block w-full border border-blue-200 p-3 focus:outline-none rounded focus:border-blue-500 '
           rows='2'
           placeholder='Write about yourself'
           name='bio'
@@ -304,7 +304,7 @@ const Register = ({ register, isAuthenticated }) => {
       </label>
       <div className='flex items-center justify-between mt-6'>
         <Link
-          className='inline-block align-baseline font-bold text-sm text-blue-300 transition duration-300 ease-in-out hover:text-blue-500'
+          className='inline-block align-baseline font-bold text-sm text-blue-300 transition duration-300 ease-in-out hover:text-blue-500 focus:outline-none'
           to='/login'
         >
           <u>Already have an account? Sign In</u>

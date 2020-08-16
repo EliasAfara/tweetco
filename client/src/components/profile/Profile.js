@@ -141,7 +141,7 @@ const Profile = ({
               type='file'
               name='backGroundPic'
               accept='image/*'
-              className='absolute z-10 w-full max-h-md  cursor-pointer top-0 left-0 opacity-0 '
+              className='absolute z-10 w-full max-h-md  cursor-pointer top-0 left-0 opacity-0 focus:outline-none'
               style={{ height: '250px' }}
               onChange={handleFileInputChange2}
               value={fileInputState2}
@@ -165,7 +165,7 @@ const Profile = ({
                   type='file'
                   name='profilePic'
                   accept='image/*'
-                  className='w-32 h-32 md:w-40  md:h-40 rounded-full absolute ml-2 z-10 opacity-0 cursor-pointer'
+                  className='w-32 h-32 md:w-40  md:h-40 rounded-full absolute ml-2 z-10 opacity-0 cursor-pointer focus:outline-none'
                   style={{ top: '-20%' }}
                   value={fileInputState1}
                   onChange={handleFileInputChange1}
@@ -177,7 +177,7 @@ const Profile = ({
                   {selectedFile1 === undefined &&
                   selectedFile2 === undefined ? (
                     <button
-                      className='bg-blue-500 transition duration-300 ease-in-out hover:bg-blue-700 text-white font-bold item-right py-2 px-4 rounded-full'
+                      className='bg-blue-500 transition duration-300 ease-in-out hover:bg-blue-700 text-white font-bold item-right py-2 px-4 rounded-full focus:outline-none'
                       onClick={() => {
                         setShowModal(true);
                       }}
@@ -188,7 +188,7 @@ const Profile = ({
                     <Fragment>
                       <button
                         type='submit'
-                        className='bg-blue-500 hover:bg-blue-700 text-white font-bold item-right py-2 px-4 rounded-full'
+                        className='bg-blue-500 hover:bg-blue-700 text-white font-bold item-right py-2 px-4 rounded-full focus:outline-none'
                         onClick={(e) => {
                           console.log(1);
                           const reader = new FileReader();
@@ -230,7 +230,7 @@ const Profile = ({
                         Update Profile
                       </button>
                       <button
-                        className=' bg-blue-500 hover:bg-blue-700 text-white font-bold item-right ml-2 py-1 px-2 rounded-full '
+                        className=' bg-blue-500 hover:bg-blue-700 text-white font-bold item-right ml-2 py-1 px-2 rounded-full focus:outline-none '
                         onClick={() => onClear()}
                       >
                         <i className='fas fa-times w-5 h-5'></i>
@@ -267,6 +267,7 @@ const Profile = ({
                         pathname: '/following',
                         state: { user: user, prev: '' },
                       }}
+                      className='focus:outline-none'
                     >
                       <u>Following</u>
                     </Link>
@@ -278,6 +279,7 @@ const Profile = ({
                         pathname: '/followers',
                         state: { user: user, prev: '' },
                       }}
+                      className='focus:outline-none'
                     >
                       <u>Followers</u>
                     </Link>
@@ -484,7 +486,7 @@ const Profile = ({
                           </label>
                           <input
                             required
-                            className='appearance-none block w-full  border border-blue-200 rounded py-3 px-4 mb-3 leading-tight   focus:border-blue-500'
+                            className='appearance-none block w-full  border border-blue-200 rounded py-3 px-4 mb-3 leading-tight  focus:outline-none focus:border-blue-500'
                             name='country'
                             value={country}
                             onChange={(e) => onChange(e)}
@@ -514,7 +516,7 @@ const Profile = ({
                           Bio
                         </span>
                         <textarea
-                          className='form-textarea mt-3 block w-full border border-blue-200 p-3 rounded focus:border-blue-500 '
+                          className='form-textarea mt-3 block w-full border border-blue-200 p-3 rounded focus:outline-none focus:border-blue-500 '
                           rows='2'
                           placeholder='Write about yourself'
                           name='bio'

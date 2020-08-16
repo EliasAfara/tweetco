@@ -63,7 +63,7 @@ const UserProfile = ({
               >
                 {!user.following.includes(state.user.username) ? (
                   <button
-                    className='bg-blue-500 hover:bg-blue-700 text-white font-bold item-right py-2 px-4 rounded-full'
+                    className='bg-blue-500 hover:bg-blue-700 text-white font-bold focus:outline-none item-right py-2 px-4 rounded-full'
                     onClick={() => follow(state.user.username)}
                   >
                     Follow
@@ -74,7 +74,7 @@ const UserProfile = ({
                       Following
                     </p>
                     <button
-                      className=' bg-blue-500 hover:bg-blue-700 text-white font-bold item-right ml-2 py-1 px-2 rounded-full '
+                      className=' bg-blue-500 hover:bg-blue-700 text-white font-bold item-right focus:outline-none ml-2 py-1 px-2 rounded-full '
                       onClick={() => unfollow(state.user.username)}
                     >
                       <i className='fas fa-times w-5 h-5'></i>
@@ -111,6 +111,7 @@ const UserProfile = ({
                       pathname: '/following',
                       state: { user: state.user, prev: '/user' },
                     }}
+                    className='focus:outline-none'
                   >
                     <u>Following</u>
                   </Link>
@@ -122,6 +123,7 @@ const UserProfile = ({
                       pathname: '/followers',
                       state: { user: state.user, prev: '/user' },
                     }}
+                    className='focus:outline-none'
                   >
                     <u>Followers</u>
                   </Link>

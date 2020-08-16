@@ -80,7 +80,7 @@ const PostForm = ({ addPost }) => {
             Quick Tweet
           </span>
           <textarea
-            className='form-textarea mt-3 block w-full border border-blue-200 p-3 rounded focus:border-blue-500 '
+            className='form-textarea mt-3 block w-full border border-blue-200 focus:outline-none p-3 rounded focus:border-blue-500 '
             rows='2'
             placeholder='Enter a quick tweet'
             name='text'
@@ -96,7 +96,7 @@ const PostForm = ({ addPost }) => {
             <i className='fas fa-images fa-2x'></i>
           </div>
 
-          <button className='bg-blue-500 transition duration-300 ease-in-out hover:bg-blue-700 text-white font-bold  px-3 rounded-full mx-3'>
+          <button className='bg-blue-500 transition duration-300 ease-in-out focus:outline-none hover:bg-blue-700 text-white font-bold  px-3 rounded-full mx-3'>
             Tweet
           </button>
         </div>
@@ -133,7 +133,7 @@ const PostForm = ({ addPost }) => {
                         type='file'
                         name='image'
                         accept='image/*'
-                        className='absolute h-full w-full top-0 left-0 cursor-pointer z-20 opacity-0'
+                        className='absolute h-full w-full top-0 left-0 cursor-pointer z-20 opacity-0 focus:outline-none'
                         value={fileInputState}
                         onChange={handleFileInputChange}
                       />
@@ -168,7 +168,7 @@ const PostForm = ({ addPost }) => {
                       placeholder='Title... (Optional)'
                     />
                     <textarea
-                      className='form-textarea mt-3 block w-full border border-blue-200 p-3 rounded focus:border-blue-500 '
+                      className='form-textarea mt-3 block w-full border border-blue-200 p-3 focus:outline-none rounded focus:border-blue-500 '
                       rows='2'
                       placeholder='Tweet'
                       name='text'

@@ -34,7 +34,7 @@ const CommentList = ({
             />
             <div className='flex flex-col text-sm md:text-md'>
               <Link
-                className='text-gray-900 leading-none'
+                className='text-gray-900 leading-none focus:outline-none'
                 to={
                   comment.username === user.username
                     ? 'profile'

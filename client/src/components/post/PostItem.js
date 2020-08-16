@@ -83,7 +83,7 @@ const PostItem = ({
               {/*Header */}
               <div className=''>
                 <Link
-                  className='text-gray-900 leading-none'
+                  className='text-gray-900 leading-none focus:outline-none'
                   to={
                     username === user.username
                       ? 'profile'
@@ -233,7 +233,7 @@ const PostItem = ({
                       placeholder='Title... (Optional)'
                     />
                     <textarea
-                      className='form-textarea mt-3 block w-full border border-blue-200 p-3 rounded focus:border-blue-500 hover:border-blue-500'
+                      className='form-textarea mt-3 block w-full border border-blue-200 p-3 rounded focus:outline-none focus:border-blue-500 hover:border-blue-500'
                       rows='2'
                       placeholder='Edittweet'
                       name='text'

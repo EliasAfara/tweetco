@@ -6,13 +6,7 @@ import { clear } from '../../actions/post';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Header = ({
-  isAuthenticated,
-  logout,
-  toggleSearch,
-  searchUsers,
-  clear,
-}) => {
+const Header = ({ isAuthenticated, logout, toggleSearch, searchUsers }) => {
   const [styleState, setStyleState] = useState(
     'w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block',
   );
@@ -102,14 +96,13 @@ const Header = ({
 
               <Link
                 to='/profile'
-                className='block mt-4 lg:inline lg:mt-0 text-blue-200 transition duration-300 ease-in-out hover:text-white text-lg mr-4'
-                onClick={() => clear()}
+                className='block mt-4 lg:inline lg:mt-0 text-blue-200 transition duration-300 ease-in-out hover:text-white text-lg mr-4 focus:outline-none'
               >
                 <i className='fas fa-user mr-2'></i>Profile
               </Link>
               <Link
                 to='/home'
-                className='block mt-4 lg:inline lg:mt-0 text-blue-200 text-lg transition duration-300 ease-in-out hover:text-white '
+                className='block mt-4 lg:inline lg:mt-0 text-blue-200 text-lg transition duration-300 ease-in-out focus:outline-none hover:text-white '
               >
                 <i className='fas fa-home mr-2'></i> Home
               </Link>
@@ -127,7 +120,7 @@ const Header = ({
                 />
                 <button
                   type='submit'
-                  className='absolute right-0 top-0 mt-4 mr-4'
+                  className='absolute right-0 top-0 mt-4 mr-4 focus:outline-none'
                 >
                   <i className='fas fa-search text-gray-600 h-4 w-4 fill-current'></i>
                 </button>
@@ -135,7 +128,7 @@ const Header = ({
             )}
             <div>
               <button
-                className='block mt-4 lg:inline-block lg:mt-0 text-blue-200 transition duration-300 ease-in-out hover:text-white '
+                className='block mt-4 lg:inline-block lg:mt-0 text-blue-200 transition duration-300 focus:outline-none ease-in-out hover:text-white '
                 onClick={() => {
                   logout();
                   clear();

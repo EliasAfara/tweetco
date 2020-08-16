@@ -12,7 +12,7 @@ const Back = ({ route, user, currentUser }) => {
     <Fragment>
       <div className='max-w-sm w-full lg:max-w-full lg:flex border-b border-gray-200'>
         <div className=' bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal'>
-          <div className='flex items-center'>
+          <div className='flex items-center focus:outline-none'>
             <Link
               to={{ pathname: route, state: { user: currentUser } }}
               className='w-10 h-10 mr-4 p-2 '

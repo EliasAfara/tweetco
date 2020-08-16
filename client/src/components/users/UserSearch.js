@@ -23,7 +23,7 @@ const UserSearch = ({ user, toggleSearch, clear, follow, auth }) => {
           <h2>
             <Link
               to={{ pathname: '/user', state: { user: user, prev: '/home' } }}
-              className='text-sm sm:text-lg truncate'
+              className='text-sm sm:text-lg truncate focus:outline-none'
               onClick={() => {
                 toggleSearch(false);
                 clear();
@@ -46,7 +46,7 @@ const UserSearch = ({ user, toggleSearch, clear, follow, auth }) => {
           ) : (
             auth.user.username !== user.username && (
               <button
-                className='bg-blue-500 hover:bg-blue-700 text-white font-bold item-right py-2 px-4 rounded-full'
+                className='bg-blue-500 hover:bg-blue-700 text-white font-bold item-right py-2 px-4 rounded-full focus:outline-none'
                 onClick={() => follow(user.username)}
               >
                 Follow

@@ -89,7 +89,7 @@ const Comments = ({
             <div className='flex flex-col text-sm md:text-md w-4/5 mr-2 md:w-10/12'>
               {/*Header */}
               <Link
-                className='text-gray-900 leading-none'
+                className='text-gray-900 leading-none focus:outline-none'
                 to={
                   post.username === user.username
                     ? 'profile'
@@ -205,17 +205,17 @@ const Comments = ({
             name='commentText'
             value={commentText}
             onChange={(e) => setCommentText(e.target.value)}
-            className='w-4/5 border rounded-full py-2 px-3 border-blue-200 '
+            className='w-4/5 border rounded-full py-2 px-3 border-blue-200 focus:outline-none '
             placeholder='Comment...'
           />
           <input
             type='submit'
-            className='bg-blue-500  transition duration-300 ease-in-out hover:bg-blue-700 text-white w-1/7 font-bold py-2 px-3 hidden sm:block rounded-full ml-5'
+            className='bg-blue-500  transition duration-300 focus:outline-none ease-in-out hover:bg-blue-700 text-white w-1/7 font-bold py-2 px-3 hidden sm:block rounded-full ml-5'
             value='Comment'
           />
           <button
             type='submit'
-            className='bg-blue-500 transition duration-300 ease-in-out hover:bg-blue-700 text-white w-1/7 font-bold py-2 px-3 sm:hidden block rounded-full ml-5'
+            className='bg-blue-500 transition duration-300 ease-in-out focus:outline-none hover:bg-blue-700 text-white w-1/7 font-bold py-2 px-3 sm:hidden block rounded-full ml-5'
             onClick={(e) => commentSubmit(e)}
           >
             <i className='fas fa-arrow-right'></i>
