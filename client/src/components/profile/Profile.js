@@ -111,9 +111,11 @@ const Profile = ({
     };
   };
 
-  if (!isAuthenticated && localStorage.length === 1) {
+  /*if (!isAuthenticated && localStorage.length === 1) {
     return <Redirect to='/login' />;
-  } else if (searching) {
+  } else */ if (
+    searching
+  ) {
     return (
       <Redirect to={{ pathname: '/search', state: { prev: '/profile' } }} />
     );

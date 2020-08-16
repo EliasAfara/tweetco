@@ -8,11 +8,13 @@ import PostList from './PostList';
 import LoadingPost from '../layout/loading/LoadingPost';
 
 const Timeline = ({ isAuthenticated, searching, timeline, user }) => {
-  const history = useHistory();
+  /*const history = useHistory();
   if (!isAuthenticated && localStorage.length === 1) {
     history.push('/login');
     return <Redirect to='/login' />;
-  } else if (searching) {
+  } else */ if (
+    searching
+  ) {
     return <Redirect to={{ pathname: '/search', state: { prev: '/home' } }} />;
   }
 

@@ -21,9 +21,14 @@ import UserProfile from './components/users/UserProfile';
 import Followers from './components/profile/Followers';
 import Following from './components/profile/Following';
 import Comments from './components/post/comments/Comments';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 const App = () => {
   useEffect(() => {
@@ -43,15 +48,15 @@ const App = () => {
                 path='/'
                 render={(props) => <Redirect to='/login' />}
               />
-              <Route exact path='/profile' component={Profile} />
-              <Route exact path='/home' component={Timeline} />
+              <PrivateRoute exact path='/profile' component={Profile} />
+              <PrivateRoute exact path='/home' component={Timeline} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/register' component={Register} />
-              <Route exact path='/search' component={UserSearchList} />
-              <Route exact path='/user' component={UserProfile} />
-              <Route exact path='/followers' component={Followers} />
-              <Route exact path='/following' component={Following} />
-              <Route exact path='/comments' component={Comments} />
+              <PrivateRoute exact path='/search' component={UserSearchList} />
+              <PrivateRoute exact path='/user' component={UserProfile} />
+              <PrivateRoute exact path='/followers' component={Followers} />
+              <PrivateRoute exact path='/following' component={Following} />
+              <PrivateRoute exact path='/comments' component={Comments} />
             </Switch>
           </div>
         </Fragment>

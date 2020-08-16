@@ -21,8 +21,8 @@ const Followers = ({
     getFollowers(state.user.followers);
   }, [state.user.followers, getFollowers, clear]);
 
-  if (!isAuthenticated && localStorage.length === 1)
-    return <Redirect to='/login' />;
+  /*if (!isAuthenticated && localStorage.length === 1)
+    return <Redirect to='/login' />;*/
   return (
     <Fragment>
       <Back
